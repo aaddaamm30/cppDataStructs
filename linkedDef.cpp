@@ -4,7 +4,7 @@
 //
 //   Author      : Adam Loo
 //   Created     : 14-08-2019
-//   Last Edited : Thu Aug 15 14:11:17 2019
+//   Last Edited : Thu Aug 15 16:35:18 2019
 //
 //   Project     : hello work unfort
 //   Goal        : hello to the world
@@ -49,7 +49,7 @@ int linkedListStructs::readNodes() {
 }
 
 //pushFront function
-int linedListStructs::pushFront(linkNode* toInsert) {
+int linkedListStructs::pushFront(linkNode* toInsert) {
     linkNode* head = listHead;
     
     toInsert->next = head;
@@ -108,7 +108,7 @@ int linkedListStructs::popTail() {
 //insert at function, fails if index is out of range
 int linkedListStructs::insertAt(int index, linkNode* toInsert) {
     linkNode* iter = listHead;
-    int i = 0;
+    int i = 1;
 
     if(index < 0) {
         std::cout << "index is less than 0\n";
@@ -120,10 +120,81 @@ int linkedListStructs::insertAt(int index, linkNode* toInsert) {
         listHead = toInsert;
         return(0);
     }
+    
+    while(i != index && iter->next != NULL) {
+        iter = iter->next;
+        i++;
+    }
+    
+    if(i != index && iter->next != NULL) {
+        std::cout << "index falls outside of the size of the list\n";
+        return(1);
+    }
+
+    if(i == index && iter->next == NULL) {
+        iter->next = toInsert;
+        toInsert->prev = iter;
+        toInsert->next = NULL;
+        return(0);
+    }
+    
+    iter->next->prev = toInsert;
+    toInsert->next = iter->next;
+    toInsert->prev = iter;
+    iter->next = toInsert;
 
     return(0);
 }         
- 
+
+//remove a node at a specific index and return the value
+int linkedListStructs::removeAt(int index) {
+    linkNode* iter = listHead;
+    int i = 2;
+    int value;
+
+    if(iter->next == NULL) {
+        std::cout << "List is only 1 node long, nothing removed.\n";
+        return(-1);
+    }
+    if(index == 0) {
+        listHead = iter->next;
+        listHead->prev = NULL;
+        value = iter->intVal;
+        delete iter;
+        return(value);
+    }
+
+    while(i != index && iter->next != NULL) {
+        iter = iter->next;
+        i++;
+    }
+
+    if(i != index && iter->next == NULL) {
+        std::cout << "index falls outside of the size of the list\n";
+        return(1);
+    }
+    
+    if(i == index && iter->next == NULL) {
+        value = iter->intVal;
+        iter->prev->next = NULL;
+        delete iter;
+        return(value);
+    }
+
+    value = iter->intVal;
+    iter->prev->next = iter->next;
+    iter->next->prev = iter->prev;
+    delete iter;
+
+    return(value);        
+}
+
+//set head
+int linkedListStructs::setHead(int val) {
+    listHead->intVal = val;
+    return(0);
+}
+
 //Hello world method
 void linkedListStructs::hello() {
     std::cout << "Hello World!" << std::endl;

@@ -4,7 +4,7 @@
 //
 //   Author      : Adam Loo
 //   Created     : 12-08-2019
-//   Last Edited : Thu Aug 15 14:11:16 2019
+//   Last Edited : Thu Aug 15 16:51:28 2019
 //
 //   Project     : header file for linked list
 //   Goal        : make things comppiles
@@ -43,7 +43,8 @@ public:
     int popHead(void);
     int popTail(void); 
     int insertAt(int, linkNode*);
-    int removeAt(int, linkNode*);
+    int removeAt(int);
+    int setHead(int);
     void hello(void);
 
 protected:
