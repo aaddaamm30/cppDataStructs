@@ -4,7 +4,7 @@
 //
 //   Author      : Adam Loo
 //   Created     : 14-08-2019
-//   Last Edited : Thu Aug 15 16:35:18 2019
+//   Last Edited : Mon Aug 26 16:24:09 2019
 //
 //   Project     : hello work unfort
 //   Goal        : hello to the world
@@ -19,8 +19,8 @@
 //constructor, creates single instance of node
 //and saves as the head
 linkedListStructs::linkedListStructs(void) {
-    linkNode head = linkNode(NULL, NULL, -1);
-    listHead = &head;
+    linkNode* head = new linkNode(NULL, NULL, -1);
+    listHead = head;
 }
 
 //method returns the head of the list
@@ -36,8 +36,8 @@ int linkedListStructs::readNodes() {
     
         std::cout << "Node # " << i << ":\n";
         std::cout << "intVal = " << iter->intVal << std::endl;
-        std::cout << "floatVal = " << iter->floatVal << std::endl;
-        std::cout << "charVal = " << iter->charVal << std::endl;
+        //std::cout << "floatVal = " << iter->floatVal << std::endl;
+        //std::cout << "charVal = " << iter->charVal << std::endl;
         std::cout << "next -> " << iter->next << std::endl;
         std::cout << "prev -> " << iter->prev << std::endl;
         iter = iter->next;
@@ -63,7 +63,7 @@ int linkedListStructs::pushFront(linkNode* toInsert) {
 //pushBack function that adds the given node to the end of the list
 int linkedListStructs::pushBack(linkNode* toInsert) {
     linkNode* endNode = linkedListStructs::getTail();
-
+    
     if (endNode->next != NULL)
         std::cout << "tail not found\n";
 

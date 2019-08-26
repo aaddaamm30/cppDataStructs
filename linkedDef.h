@@ -4,7 +4,7 @@
 //
 //   Author      : Adam Loo
 //   Created     : 12-08-2019
-//   Last Edited : Thu Aug 15 16:51:28 2019
+//   Last Edited : Mon Aug 26 16:21:52 2019
 //
 //   Project     : header file for linked list
 //   Goal        : make things comppiles
@@ -18,8 +18,6 @@
 //linkedList node object
 struct linkNode {
     int intVal;
-    float floatVal;
-    char* charVal;
     linkNode* next;
     linkNode* prev;
     
