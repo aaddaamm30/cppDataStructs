@@ -4,7 +4,7 @@
 //
 //   Author      : Adam Loo
 //   Created     : 14-08-2019
-//   Last Edited : Mon Aug 26 16:24:09 2019
+//   Last Edited : Mon Aug 26 16:54:41 2019
 //
 //   Project     : hello work unfort
 //   Goal        : hello to the world
@@ -197,7 +197,7 @@ int linkedListStructs::setHead(int val) {
 
 //Hello world method
 void linkedListStructs::hello() {
-    std::cout << "Hello World!" << std::endl;
+    std::cout << "Whats up people, what would you like to do?\n" << std::endl;
 }
 
 //private method to get tail of list
